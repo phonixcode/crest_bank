@@ -1,0 +1,96 @@
+<script>
+
+    $(document).ready(function(){
+      $("#nextBtn").prop("disabled", true);
+          $("#email").keyup(function(){
+              if(validateEmail()){
+                  $("#email").css("border","2px solid green");
+          $("#email").css("background-color","");
+                  $("#emailMsg").html("");
+              }else{
+                  $("#email").css("border","2px solid red");
+          $("#email").css("background-color","#ffdddd");
+                  $("#emailMsg").html("<p class='text-danger'>Not a valid email</p>");
+              }
+        buttonState();
+          });
+      });
+  
+    function validateEmail(){
+          var email=$("#email").val();
+           var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+           if(reg.test(email)){
+               return true;
+           }else{
+               return false;
+           }
+      }
+  
+    function buttonState(){
+          if(validateEmail()){
+              // if the both email and password are validate
+              // then button should show visible
+              $("#nextBtn").prop("disabled", false);
+          }else{
+              // if both email and password are not validated
+              // button state should hidden
+              $("#nextBtn").prop("disabled", true);
+          }
+      }
+  
+  var currentTab = 0;
+  showTab(currentTab);
+  
+  function showTab(n) {
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    if (n == 0) {
+      document.getElementById("prevBtn").style.display = "none";
+    } else {
+      document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+      document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+      document.getElementById("nextBtn").innerHTML = "Next";
+    }
+    fixStepIndicator(n)
+  }
+  
+  function nextPrev(n) {
+    var x = document.getElementsByClassName("tab");
+    if (n == 1 && !validateForm()) return false;
+    x[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= x.length) {
+      document.getElementById("regForm").submit();
+      return false;
+    }
+    showTab(currentTab);
+  }
+  
+  function validateForm() {
+    var x, y, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByClassName("validate");
+    for (i = 0; i < y.length; i++) {
+      if (y[i].value == "") {
+        y[i].className += " invalid";
+        valid = false;
+      }
+    }
+    if (valid) {
+      document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid;
+  }
+  
+  function fixStepIndicator(n) {
+    var i, x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+      x[i].className = x[i].className.replace(" active", "");
+    }
+    x[n].className += " active";
+  }
+  </script>
+  

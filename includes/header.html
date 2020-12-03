@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="shortcut icon" href="image/favicon.png">
+  </head>
+  <title><?php echo $title; ?></title>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container"><a href="index.php" class="navbar-brand home"><img src="image/logo2.png" alt="Crest Bank logo" class="d-none d-md-inline-block"><img src="image/logo2.png" alt="Crest Bank logo" class="d-inline-block d-md-none"><span class="sr-only">Crest Bank - go to homepage</span></a>
+        <div class="navbar-buttons">
+          <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
+          <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i>
+        </div>
+        <div id="navigation" class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a href="index.php" class="nav-link <?php echo $i_active; ?>" style="width:150px; text-align:center; "><i class="fa fa-home"></i>Home</a></li>
+            <li class="nav-item"><a href="register.php" class="nav-link emphasis <?php echo $r_active; ?>" style="width:150px; text-align:center; "><i class="fa fa-registered"></i>Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  </body>
